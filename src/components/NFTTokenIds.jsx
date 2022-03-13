@@ -302,6 +302,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                       borderRadius: "10px",
                       marginBottom: "15px",
                     }}
+                    alt="placeholder"
                   />
                 </Badge.Ribbon>
               </div>
@@ -322,6 +323,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 borderRadius: "10px",
                 marginBottom: "15px",
               }}
+              alt="placeholder"
             />
             <Alert
               message="This NFT is currently not for sale"
