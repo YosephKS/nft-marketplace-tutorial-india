@@ -1,9 +1,8 @@
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
-import { useMoralis } from "react-moralis";
+import { useState } from "react";
+import { useMoralis, useChain } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
 import Blockie from "./Blockie";
 import { Button, Card, Modal } from "antd";
-import { useState } from "react";
 import Address from "./Address/Address";
 import { SelectOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
@@ -25,8 +24,8 @@ const styles = {
 };
 
 function Account() {
-  const { authenticate, isAuthenticated, logout } = useMoralis();
-  const { walletAddress, chainId } = useMoralisDapp();
+  const { authenticate, isAuthenticated, account, logout } = useMoralis();
+  const { chainId } = useChain();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   if (!isAuthenticated) {
@@ -44,7 +43,7 @@ function Account() {
     <>
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
         <p style={{ marginRight: "5px", ...styles.text }}>
-          {getEllipsisTxt(walletAddress, 6)}
+          {getEllipsisTxt(account, 6)}
         </p>
         <Blockie currentWallet scale={3} />
       </div>
@@ -76,7 +75,7 @@ function Account() {
           />
           <div style={{ marginTop: "10px", padding: "0 10px" }}>
             <a
-              href={`${getExplorer(chainId)}/address/${walletAddress}`}
+              href={`${getExplorer(chainId)}/address/${account}`}
               target="_blank"
               rel="noreferrer"
             >

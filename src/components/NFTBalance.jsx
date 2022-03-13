@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useMoralis } from "react-moralis";
+import { useMoralis, useChain } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input, Alert, Spin, Button } from "antd";
 import { useNFTBalance } from "hooks/useNFTBalance";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
 const { Meta } = Card;
@@ -22,14 +21,15 @@ const styles = {
 
 function NFTBalance() {
   const { NFTBalance, fetchSuccess } = useNFTBalance();
-  const { chainId, marketAddress, contractABI } = useMoralisDapp();
+  // const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
+  const { chainId } = useChain();
   const [visible, setVisibility] = useState(false);
   const [nftToSend, setNftToSend] = useState(null);
   const [price, setPrice] = useState(1);
   const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
-  const contractABIJson = JSON.parse(contractABI);
+  const contractABIJson = {};
   const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
 
@@ -37,7 +37,7 @@ function NFTBalance() {
     setLoading(true);
     const p = listPrice * ("1e" + 18);
     const ops = {
-      contractAddress: marketAddress,
+      // contractAddress: marketAddress,
       functionName: listItemFunction,
       abi: contractABIJson,
       params: {
@@ -63,16 +63,26 @@ function NFTBalance() {
     });
   }
 
-
   async function approveAll(nft) {
-    setLoading(true);  
+    setLoading(true);
     const ops = {
       contractAddress: nft.token_address,
       functionName: "setApprovalForAll",
-      abi: [{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"}],
+      abi: [
+        {
+          inputs: [
+            { internalType: "address", name: "operator", type: "address" },
+            { internalType: "bool", name: "approved", type: "bool" },
+          ],
+          name: "setApprovalForAll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
       params: {
-        operator: marketAddress,
-        approved: true
+        // operator: marketAddress,
+        approved: true,
       },
     };
 
@@ -215,15 +225,13 @@ function NFTBalance() {
         onOk={() => list(nftToSend, price)}
         okText="List"
         footer={[
-          <Button onClick={() => setVisibility(false)}>
-            Cancel
-          </Button>,
+          <Button onClick={() => setVisibility(false)}>Cancel</Button>,
           <Button onClick={() => approveAll(nftToSend)} type="primary">
             Approve
           </Button>,
           <Button onClick={() => list(nftToSend, price)} type="primary">
             List
-          </Button>
+          </Button>,
         ]}
       >
         <Spin spinning={loading}>
@@ -235,6 +243,7 @@ function NFTBalance() {
               borderRadius: "10px",
               marginBottom: "15px",
             }}
+            alt="placeholder"
           />
           <Input
             autoFocus

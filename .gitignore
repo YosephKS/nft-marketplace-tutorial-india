@@ -23,6 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
+package-lock.json
 
 node_modules
 .env
@@ -33,3 +34,5 @@ typechain
 #Truffle files
 /Truffle/build
 /Truffle/data
+
+.secret

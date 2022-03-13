@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getNativeByChain } from "helpers/networks";
 import { getCollectionsByChain } from "helpers/collections";
-import {
-  useMoralis,
-  useMoralisQuery,
-  useNewMoralisObject,
-} from "react-moralis";
+import { useMoralis, useChain, useMoralisQuery } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import {
@@ -13,7 +9,6 @@ import {
   RightCircleOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
 const { Meta } = Card;
@@ -34,7 +29,6 @@ const styles = {
     alignItems: "center",
     margin: "0 auto",
     width: "600px",
-    //borderRadius: "10px",
     height: "150px",
     marginBottom: "40px",
     paddingBottom: "20px",
@@ -44,8 +38,6 @@ const styles = {
     height: "115px",
     width: "115px",
     borderRadius: "50%",
-    // positon: "relative",
-    // marginTop: "-80px",
     border: "solid 4px white",
   },
   text: {
@@ -63,11 +55,10 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const [nftToBuy, setNftToBuy] = useState(null);
   const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
-  const { chainId, marketAddress, contractABI, walletAddress } =
-    useMoralisDapp();
-  const nativeName = getNativeByChain(chainId);
-  const contractABIJson = JSON.parse(contractABI);
+  const contractABIJson = {};
   const { Moralis } = useMoralis();
+  const { chainId } = useChain();
+  const nativeName = getNativeByChain(chainId);
   const queryMarketItems = useMoralisQuery("MarketItems");
   const fetchMarketItems = JSON.parse(
     JSON.stringify(queryMarketItems.data, [
@@ -92,7 +83,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     const itemID = tokenDetails.itemId;
     const tokenPrice = tokenDetails.price;
     const ops = {
-      contractAddress: marketAddress,
+      // contractAddress: marketAddress,
       functionName: purchaseItemFunction,
       abi: contractABIJson,
       params: {
@@ -152,7 +143,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     const query = new Moralis.Query(marketList);
     await query.get(id).then((obj) => {
       obj.set("sold", true);
-      obj.set("owner", walletAddress);
+      // obj.set("owner", walletAddress);
       obj.save();
     });
   }
