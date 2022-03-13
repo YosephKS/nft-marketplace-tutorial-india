@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useChain from "hooks/useChain";
+import { useChain } from "react-moralis";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";

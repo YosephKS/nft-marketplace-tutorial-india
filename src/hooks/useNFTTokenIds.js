@@ -25,8 +25,8 @@ export const useNFTTokenIds = (addr) => {
   });
 
   const handleFetchTokenIds = useCallback(async () => {
-    const NFTs = data.result;
-    setTotalNFTs(data.total);
+    const NFTs = data?.result ?? [];
+    setTotalNFTs(data?.total);
     setFetchSuccess(true);
     for (let NFT of NFTs) {
       if (NFT?.metadata) {
@@ -45,7 +45,7 @@ export const useNFTTokenIds = (addr) => {
       }
     }
     setNFTTokenIds(NFTs);
-  }, [data.result, data.total, resolveLink]);
+  }, [data, resolveLink]);
 
   useEffect(() => {
     if (data?.result) {
