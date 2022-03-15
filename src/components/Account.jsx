@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useMoralis, useChain } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
-import Blockie from "./Blockie";
 import { Button, Card, Modal } from "antd";
 import Address from "./Address/Address";
 import { SelectOutlined } from "@ant-design/icons";
@@ -20,6 +19,8 @@ const styles = {
   },
   text: {
     color: "#21BF96",
+    marginTop: 0,
+    marginBottom: 0,
   },
 };
 
@@ -43,9 +44,8 @@ function Account() {
     <>
       <div style={styles.account} onClick={() => setIsModalVisible(true)}>
         <p style={{ marginRight: "5px", ...styles.text }}>
-          {getEllipsisTxt(account, 6)}
+          {getEllipsisTxt(account)}
         </p>
-        <Blockie currentWallet scale={3} />
       </div>
       <Modal
         visible={isModalVisible}

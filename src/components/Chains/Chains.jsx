@@ -27,11 +27,6 @@ const menuItems = [
     icon: <ETHLogo />,
   },
   {
-    key: "0x539",
-    value: "Local Chain",
-    icon: <ETHLogo />,
-  },
-  {
     key: "0x3",
     value: "Ropsten Testnet",
     icon: <ETHLogo />,
@@ -53,27 +48,32 @@ const menuItems = [
   },
   {
     key: "0x38",
-    value: "Binance",
+    value: "BSC Mainnet",
     icon: <BSCLogo />,
   },
   {
     key: "0x61",
-    value: "Smart Chain Testnet",
+    value: "BSC Testnet",
     icon: <BSCLogo />,
   },
   {
     key: "0x89",
-    value: "Polygon",
+    value: "Polygon Mainnet",
     icon: <PolygonLogo />,
   },
   {
     key: "0x13881",
-    value: "Mumbai",
+    value: "Polygon Mumbai",
     icon: <PolygonLogo />,
   },
   {
     key: "0xa86a",
-    value: "Avalanche",
+    value: "Avalanche Mainnet",
+    icon: <AvaxLogo />,
+  },
+  {
+    key: "0xa869",
+    value: "Avalanche Testnet",
     icon: <AvaxLogo />,
   },
 ];

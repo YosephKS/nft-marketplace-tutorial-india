@@ -53,6 +53,12 @@ export const useNFTTokenIds = (addr) => {
     }
   }, [data, handleFetchTokenIds]);
 
+  useEffect(() => {
+    if (addr !== "explore") {
+      getNFTTokenIds();
+    }
+  }, [getNFTTokenIds, addr]);
+
   return {
     getNFTTokenIds,
     NFTTokenIds,

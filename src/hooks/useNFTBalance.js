@@ -20,7 +20,7 @@ export const useNFTBalance = (options) => {
   const [fetchSuccess, setFetchSuccess] = useState(true);
 
   const handleFetchNFTBalance = useCallback(async () => {
-    const NFTs = data.result;
+    const NFTs = data?.result;
     setFetchSuccess(true);
     for (let NFT of NFTs) {
       if (NFT?.metadata) {
@@ -39,7 +39,7 @@ export const useNFTBalance = (options) => {
       }
     }
     setNFTBalance(NFTs);
-  }, [data.result, resolveLink]);
+  }, [data, resolveLink]);
 
   useEffect(() => {
     if (data?.result) {

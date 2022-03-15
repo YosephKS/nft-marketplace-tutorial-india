@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MarketPlace is Ownable, ReentrancyGuard {
+contract Marketplace is Ownable, ReentrancyGuard {
     using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
@@ -39,7 +39,7 @@ contract MarketPlace is Ownable, ReentrancyGuard {
         uint256 tokenId,
         uint256 price
     ) public payable nonReentrant {
-        require(price > 0, "Price must be greater than 0");
+        require(price > 0, "Marketplace: Price must be greater than 0");
 
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
 
@@ -88,23 +88,6 @@ contract MarketPlace is Ownable, ReentrancyGuard {
         idToMarketItem[itemId].sold = true;
 
         emit MarketItemSold(itemId, msg.sender);
-    }
-
-    function fetchMarketItems() public view returns (MarketItem[] memory) {
-        uint256 itemCount = _itemIds.current();
-        uint256 unsoldItemCount = _itemIds.current() - _itemsSold.current();
-        uint256 currentIndex = 0;
-
-        MarketItem[] memory items = new MarketItem[](unsoldItemCount);
-        for (uint256 i = 0; i < itemCount; i++) {
-            if (idToMarketItem[i + 1].owner == address(0)) {
-                uint256 currentId = i + 1;
-                MarketItem storage currentItem = idToMarketItem[currentId];
-                items[currentIndex] = currentItem;
-                currentIndex += 1;
-            }
-        }
-        return items;
     }
 }
 

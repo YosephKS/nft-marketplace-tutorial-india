@@ -91,13 +91,13 @@ const App = () => {
             defaultSelectedKeys={["nftMarket"]}
           >
             <Menu.Item key="nftMarket" onClick={() => setInputValue("explore")}>
-              <NavLink to="/NFTMarketPlace">🛒 Explore Market</NavLink>
+              <NavLink to="/marketplace">🛒 Explore</NavLink>
             </Menu.Item>
             <Menu.Item key="nft">
-              <NavLink to="/nftBalance">🖼 Your Collection</NavLink>
+              <NavLink to="/balance">🖼 Collections</NavLink>
             </Menu.Item>
             <Menu.Item key="transactions">
-              <NavLink to="/Transactions">📑 Your Transactions</NavLink>
+              <NavLink to="/transactions">📑 Transactions</NavLink>
             </Menu.Item>
           </Menu>
           <div style={styles.headerRight}>
@@ -108,20 +108,20 @@ const App = () => {
         </Header>
         <div style={styles.content}>
           <Switch>
-            <Route path="/nftBalance">
-              <NFTBalance />
-            </Route>
-            <Route path="/NFTMarketPlace">
+            <Route path="/marketplace">
               <NFTTokenIds
                 inputValue={inputValue}
                 setInputValue={setInputValue}
               />
             </Route>
-            <Route path="/Transactions">
+            <Route path="/balance">
+              <NFTBalance />
+            </Route>
+            <Route path="/transactions">
               <NFTMarketTransactions />
             </Route>
           </Switch>
-          <Redirect to="/NFTMarketPlace" />
+          <Redirect to="/marketplace" />
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>

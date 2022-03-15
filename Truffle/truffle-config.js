@@ -7,6 +7,7 @@ require("dotenv").config();
 
 module.exports = {
   plugins: ["truffle-plugin-verify"],
+  contracts_build_directory: "../src/contracts/",
   api_keys: {
     etherscan: process.env.ETHERSCAN_API_KEY,
     polygonscan: process.env.POLYGONSCAN_API_KEY,

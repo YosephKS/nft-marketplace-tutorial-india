@@ -5,6 +5,8 @@ import { useNFTBalance } from "hooks/useNFTBalance";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
+import { abi } from "../contracts/Marketplace.json";
+import { abi as erc721ABI } from "../contracts/ERC721.json";
 const { Meta } = Card;
 
 const styles = {
@@ -21,7 +23,6 @@ const styles = {
 
 function NFTBalance() {
   const { NFTBalance, fetchSuccess } = useNFTBalance();
-  // const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const { chainId } = useChain();
   const [visible, setVisibility] = useState(false);
@@ -29,7 +30,6 @@ function NFTBalance() {
   const [price, setPrice] = useState(1);
   const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
-  const contractABIJson = {};
   const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
 
@@ -37,9 +37,9 @@ function NFTBalance() {
     setLoading(true);
     const p = listPrice * ("1e" + 18);
     const ops = {
-      // contractAddress: marketAddress,
+      contractAddress: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
       functionName: listItemFunction,
-      abi: contractABIJson,
+      abi,
       params: {
         nftContract: nft.token_address,
         tokenId: nft.token_id,
@@ -68,20 +68,9 @@ function NFTBalance() {
     const ops = {
       contractAddress: nft.token_address,
       functionName: "setApprovalForAll",
-      abi: [
-        {
-          inputs: [
-            { internalType: "address", name: "operator", type: "address" },
-            { internalType: "bool", name: "approved", type: "bool" },
-          ],
-          name: "setApprovalForAll",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
+      abi: erc721ABI,
       params: {
-        // operator: marketAddress,
+        operator: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
         approved: true,
       },
     };
@@ -164,7 +153,7 @@ function NFTBalance() {
   return (
     <>
       <div style={styles.NFTs}>
-        {contractABIJson.noContractDeployed && (
+        {abi.noContractDeployed && (
           <>
             <Alert
               message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"

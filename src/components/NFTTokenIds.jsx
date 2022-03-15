@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
+import { abi } from "../contracts/Marketplace.json";
 const { Meta } = Card;
 
 const styles = {
@@ -55,8 +56,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const [nftToBuy, setNftToBuy] = useState(null);
   const [loading, setLoading] = useState(false);
   const contractProcessor = useWeb3ExecuteFunction();
-  const contractABIJson = {};
-  const { Moralis } = useMoralis();
+  const { Moralis, account } = useMoralis();
   const { chainId } = useChain();
   const nativeName = getNativeByChain(chainId);
   const queryMarketItems = useMoralisQuery("MarketItems");
@@ -83,9 +83,9 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     const itemID = tokenDetails.itemId;
     const tokenPrice = tokenDetails.price;
     const ops = {
-      // contractAddress: marketAddress,
+      contractAddress: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
       functionName: purchaseItemFunction,
-      abi: contractABIJson,
+      abi,
       params: {
         nftContract: nftToBuy.token_address,
         itemId: itemID,
@@ -143,7 +143,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     const query = new Moralis.Query(marketList);
     await query.get(id).then((obj) => {
       obj.set("sold", true);
-      // obj.set("owner", walletAddress);
+      obj.set("owner", account);
       obj.save();
     });
   }
@@ -162,7 +162,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   return (
     <>
       <div>
-        {contractABIJson.noContractDeployed && (
+        {abi.noContractDeployed && (
           <>
             <Alert
               message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
@@ -209,7 +209,8 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         )}
 
         <div style={styles.NFTs}>
-          {inputValue === "explore" &&
+          {NFTCollections &&
+            inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
               <Card
                 hoverable
