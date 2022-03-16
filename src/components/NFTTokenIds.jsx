@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import { getNativeByChain } from "helpers/networks";
 import { getCollectionsByChain } from "helpers/collections";
 import { useMoralis, useChain, useMoralisQuery } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Badge, Alert, Spin } from "antd";
+import {
+  Card,
+  Image,
+  Tooltip,
+  Modal,
+  Badge,
+  Alert,
+  Spin,
+  notification,
+} from "antd";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import {
   FileSearchOutlined,
@@ -11,8 +20,7 @@ import {
 } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
-import { abi } from "../contracts/Marketplace.json";
-const { Meta } = Card;
+import { abi as marketplaceABI } from "../contracts/Marketplace.json";
 
 const styles = {
   NFTs: {
@@ -54,8 +62,6 @@ function NFTTokenIds({ inputValue, setInputValue }) {
   const { NFTTokenIds, totalNFTs, fetchSuccess } = useNFTTokenIds(inputValue);
   const [visible, setVisibility] = useState(false);
   const [nftToBuy, setNftToBuy] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const contractProcessor = useWeb3ExecuteFunction();
   const { Moralis, account } = useMoralis();
   const { chainId } = useChain();
   const nativeName = getNativeByChain(chainId);
@@ -74,79 +80,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
       "confirmed",
     ])
   );
-  const purchaseItemFunction = "createMarketSale";
   const NFTCollections = getCollectionsByChain(chainId);
-
-  async function purchase() {
-    setLoading(true);
-    const tokenDetails = getMarketItem(nftToBuy);
-    const itemID = tokenDetails.itemId;
-    const tokenPrice = tokenDetails.price;
-    const ops = {
-      contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
-      functionName: purchaseItemFunction,
-      abi,
-      params: {
-        nftContract: nftToBuy.token_address,
-        itemId: itemID,
-      },
-      msgValue: tokenPrice,
-    };
-
-    await contractProcessor.fetch({
-      params: ops,
-      onSuccess: () => {
-        console.log("success");
-        setLoading(false);
-        setVisibility(false);
-        updateSoldMarketItem();
-        succPurchase();
-      },
-      onError: (error) => {
-        setLoading(false);
-        failPurchase();
-      },
-    });
-  }
-
-  const handleBuyClick = (nft) => {
-    setNftToBuy(nft);
-    console.log(nft.image);
-    setVisibility(true);
-  };
-
-  function succPurchase() {
-    let secondsToGo = 5;
-    const modal = Modal.success({
-      title: "Success!",
-      content: `You have purchased this NFT`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
-
-  function failPurchase() {
-    let secondsToGo = 5;
-    const modal = Modal.error({
-      title: "Error!",
-      content: `There was a problem when purchasing this NFT`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
-
-  async function updateSoldMarketItem() {
-    const id = getMarketItem(nftToBuy).objectId;
-    const marketList = Moralis.Object.extend("MarketItems");
-    const query = new Moralis.Query(marketList);
-    await query.get(id).then((obj) => {
-      obj.set("sold", true);
-      obj.set("owner", account);
-      obj.save();
-    });
-  }
 
   const getMarketItem = (nft) => {
     const result = fetchMarketItems?.find(
@@ -158,10 +92,61 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     return result;
   };
 
+  const {
+    fetch: createMarketSale,
+    isFetching: createMarketSaleFetching,
+    isLoading: createMarketSaleLoading,
+  } = useWeb3ExecuteFunction({
+    contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
+    functionName: "createMarketSale",
+    abi: marketplaceABI,
+    params: {
+      nftContract: nftToBuy?.token_address,
+      itemId: getMarketItem(nftToBuy)?.itemId,
+    },
+    msgValue: getMarketItem(nftToBuy)?.price,
+  });
+
+  async function purchaseItem() {
+    await createMarketSale({
+      onSuccess: () => {
+        console.log("success");
+        setVisibility(false);
+        updateSoldMarketItem();
+        notification.success({
+          message: "Success!",
+          description: "You have purchased this NFT!",
+        });
+      },
+      onError: () => {
+        notification.error({
+          message: "Error!",
+          description: "There was a problem when purchasing this NFT",
+        });
+      },
+    });
+  }
+
+  const handleBuyClick = (nft) => {
+    setNftToBuy(nft);
+    setVisibility(true);
+  };
+
+  const updateSoldMarketItem = async () => {
+    const id = getMarketItem(nftToBuy).objectId;
+    const marketList = Moralis.Object.extend("MarketItems");
+    const query = new Moralis.Query(marketList);
+    await query.get(id).then((obj) => {
+      obj.set("sold", true);
+      obj.set("owner", account);
+      obj.save();
+    });
+  };
+
   return (
     <>
       <div>
-        {abi.noContractDeployed && (
+        {marketplaceABI.noContractDeployed && (
           <>
             <Alert
               message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
@@ -232,7 +217,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 }
                 key={index}
               >
-                <Meta title={nft.name} />
+                <Card.Meta title={nft.name} />
               </Card>
             ))}
 
@@ -268,9 +253,9 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                 key={index}
               >
                 {getMarketItem(nft) && (
-                  <Badge.Ribbon text="Buy Now" color="green"></Badge.Ribbon>
+                  <Badge.Ribbon text="Buy Now" color="green" />
                 )}
-                <Meta title={nft.name} description={`#${nft.token_id}`} />
+                <Card.Meta title={nft.name} description={`#${nft.token_id}`} />
               </Card>
             ))}
         </div>
@@ -279,10 +264,12 @@ function NFTTokenIds({ inputValue, setInputValue }) {
             title={`Buy ${nftToBuy?.name} #${nftToBuy?.token_id}`}
             visible={visible}
             onCancel={() => setVisibility(false)}
-            onOk={() => purchase()}
+            onOk={purchaseItem}
             okText="Buy"
           >
-            <Spin spinning={loading}>
+            <Spin
+              spinning={createMarketSaleFetching || createMarketSaleLoading}
+            >
               <div
                 style={{
                   width: "250px",

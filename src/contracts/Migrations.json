@@ -1258,12 +1258,12 @@
     "80001": {
       "events": {},
       "links": {},
-      "address": "0xFBFaB633c2d2A87ba12AE10Ae641261C8d894Eae",
-      "transactionHash": "0xc506237c4f2bd23a2b31b76c26a1c4b735b36bfa3dfd32186ccba96eb527e626"
+      "address": "0x252457296b36eF18DcDa39f6adAEa911F71D0b9F",
+      "transactionHash": "0x147f93ad7cc6b4b902773c4f518e6563cafa7f25ad7a0e6a89b7a2c8cddfcc73"
     }
   },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-03-15T19:12:17.004Z",
+  "updatedAt": "2022-03-16T02:29:06.909Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

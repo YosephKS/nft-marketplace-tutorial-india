@@ -31,7 +31,7 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { NFTBalance, fetchSuccess } = useNFTBalance();
+  const { NFTBalance, fetchSuccess, getNFTBalance } = useNFTBalance();
   const { Moralis } = useMoralis();
   const { chainId } = useChain();
   const [visible, setVisibility] = useState(false);
@@ -87,6 +87,7 @@ function NFTBalance() {
       onSuccess: () => {
         setVisibility(false);
         addItemImage();
+        getNFTBalance();
         notification.success({
           message: "Success!",
           description:
@@ -105,7 +106,6 @@ function NFTBalance() {
   const approveAll = async () => {
     await setApproveForAll({
       onSuccess: () => {
-        setVisibility(false);
         notification.success({
           message: "Success!",
           description: "Approval is now set, you may list your NFT!",

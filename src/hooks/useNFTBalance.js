@@ -8,7 +8,11 @@ import {
 import { useIPFS } from "./useIPFS";
 
 export const useNFTBalance = (options) => {
-  const { isInitialized, account: walletAddress } = useMoralis();
+  const {
+    isInitialized,
+    isAuthenticated,
+    account: walletAddress,
+  } = useMoralis();
   const { chainId } = useChain();
   const { account } = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
@@ -56,7 +60,7 @@ export const useNFTBalance = (options) => {
   }, [data]);
 
   useEffect(() => {
-    if (isInitialized && chainId && account) {
+    if (isInitialized && isAuthenticated && chainId && account) {
       getNFTBalance();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
