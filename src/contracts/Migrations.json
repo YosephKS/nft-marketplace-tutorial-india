@@ -455,9 +455,7 @@
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
-      "Migrations": [
-        2079
-      ]
+      "Migrations": [2079]
     },
     "id": 2080,
     "license": "MIT",
@@ -465,12 +463,7 @@
     "nodes": [
       {
         "id": 2044,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:13"
       },
@@ -482,9 +475,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2079,
-        "linearizedBaseContracts": [
-          2079
-        ],
+        "linearizedBaseContracts": [2079],
         "name": "Migrations",
         "nameLocation": "67:10:13",
         "nodeType": "ContractDefinition",
@@ -854,9 +845,7 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
-      "Migrations": [
-        2079
-      ]
+      "Migrations": [2079]
     },
     "id": 2080,
     "license": "MIT",
@@ -864,12 +853,7 @@
     "nodes": [
       {
         "id": 2044,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:13"
       },
@@ -881,9 +865,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2079,
-        "linearizedBaseContracts": [
-          2079
-        ],
+        "linearizedBaseContracts": [2079],
         "name": "Migrations",
         "nameLocation": "67:10:13",
         "nodeType": "ContractDefinition",

@@ -78,7 +78,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
       "seller",
       "owner",
       "confirmed",
-    ])
+    ]),
   );
   const NFTCollections = getCollectionsByChain(chainId);
 
@@ -87,7 +87,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
       (e) =>
         e.nftContract === nft?.token_address &&
         e.tokenId === nft?.token_id &&
-        e.sold === false
+        e.sold === false,
     );
     return result;
   };
@@ -238,7 +238,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
                       onClick={() =>
                         window.open(
                           `${getExplorer(chainId)}address/${nft.token_address}`,
-                          "_blank"
+                          "_blank",
                         )
                       }
                     />

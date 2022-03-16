@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
     "exportedSymbols": {
-      "ReentrancyGuard": [
-        144
-      ]
+      "ReentrancyGuard": [144]
     },
     "id": 145,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 106,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "97:23:1"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 144,
-        "linearizedBaseContracts": [
-          144
-        ],
+        "linearizedBaseContracts": [144],
         "name": "ReentrancyGuard",
         "nameLocation": "891:15:1",
         "nodeType": "ContractDefinition",
@@ -325,10 +316,7 @@
                       "id": 126,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2317:7:1",
                       "typeDescriptions": {
@@ -479,9 +467,7 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
     "exportedSymbols": {
-      "ReentrancyGuard": [
-        144
-      ]
+      "ReentrancyGuard": [144]
     },
     "id": 145,
     "license": "MIT",
@@ -489,12 +475,7 @@
     "nodes": [
       {
         "id": 106,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "97:23:1"
       },
@@ -512,9 +493,7 @@
         },
         "fullyImplemented": true,
         "id": 144,
-        "linearizedBaseContracts": [
-          144
-        ],
+        "linearizedBaseContracts": [144],
         "name": "ReentrancyGuard",
         "nameLocation": "891:15:1",
         "nodeType": "ContractDefinition",
@@ -790,10 +769,7 @@
                       "id": 126,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2317:7:1",
                       "typeDescriptions": {

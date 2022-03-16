@@ -20,7 +20,7 @@ function NFTMarketTransactions() {
       "tokenId",
       "name",
       "image",
-    ])
+    ]),
   );
   const queryMarketItems = useMoralisQuery("MarketItems");
   const fetchMarketItems = JSON.parse(
@@ -33,23 +33,23 @@ function NFTMarketTransactions() {
       "tokenId",
       "seller",
       "owner",
-    ])
+    ]),
   )
     .filter((item) => item.seller === account || item.owner === account)
     .sort((a, b) =>
-      a.updatedAt < b.updatedAt ? 1 : b.updatedAt < a.updatedAt ? -1 : 0
+      a.updatedAt < b.updatedAt ? 1 : b.updatedAt < a.updatedAt ? -1 : 0,
     );
 
   function getImage(addrs, id) {
     const img = fetchItemImages.find(
-      (element) => element.nftContract === addrs && element.tokenId === id
+      (element) => element.nftContract === addrs && element.tokenId === id,
     );
     return img?.image;
   }
 
   function getName(addrs, id) {
     const nme = fetchItemImages.find(
-      (element) => element.nftContract === addrs && element.tokenId === id
+      (element) => element.nftContract === addrs && element.tokenId === id,
     );
     return nme?.name;
   }

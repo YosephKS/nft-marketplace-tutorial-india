@@ -11035,36 +11035,16 @@
   "ast": {
     "absolutePath": "project:/contracts/NFT.sol",
     "exportedSymbols": {
-      "Address": [
-        1321
-      ],
-      "Context": [
-        1343
-      ],
-      "ERC165": [
-        1570
-      ],
-      "ERC721": [
-        865
-      ],
-      "IERC165": [
-        1582
-      ],
-      "IERC721": [
-        981
-      ],
-      "IERC721Metadata": [
-        1026
-      ],
-      "IERC721Receiver": [
-        999
-      ],
-      "NFT": [
-        1615
-      ],
-      "Strings": [
-        1546
-      ]
+      "Address": [1321],
+      "Context": [1343],
+      "ERC165": [1570],
+      "ERC721": [865],
+      "IERC165": [1582],
+      "IERC721": [981],
+      "IERC721Metadata": [1026],
+      "IERC721Receiver": [999],
+      "NFT": [1615],
+      "Strings": [1546]
     },
     "id": 1616,
     "license": "MIT",
@@ -11072,12 +11052,7 @@
     "nodes": [
       {
         "id": 1584,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:9"
       },
@@ -11114,15 +11089,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1615,
-        "linearizedBaseContracts": [
-          1615,
-          865,
-          1026,
-          981,
-          1570,
-          1582,
-          1343
-        ],
+        "linearizedBaseContracts": [1615, 865, 1026, 981, 1570, 1582, 1343],
         "name": "NFT",
         "nameLocation": "126:3:9",
         "nodeType": "ContractDefinition",
@@ -11183,10 +11150,7 @@
                       "id": 1594,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        494,
-                        523
-                      ],
+                      "overloadedDeclarations": [494, 523],
                       "referencedDeclaration": 494,
                       "src": "202:9:9",
                       "typeDescriptions": {
@@ -11263,10 +11227,7 @@
                       "id": 1599,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        494,
-                        523
-                      ],
+                      "overloadedDeclarations": [494, 523],
                       "referencedDeclaration": 494,
                       "src": "268:9:9",
                       "typeDescriptions": {
@@ -11369,9 +11330,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              216
-            ],
+            "baseFunctions": [216],
             "body": {
               "id": 1613,
               "nodeType": "Block",
@@ -11471,36 +11430,16 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/NFT.sol",
     "exportedSymbols": {
-      "Address": [
-        1321
-      ],
-      "Context": [
-        1343
-      ],
-      "ERC165": [
-        1570
-      ],
-      "ERC721": [
-        865
-      ],
-      "IERC165": [
-        1582
-      ],
-      "IERC721": [
-        981
-      ],
-      "IERC721Metadata": [
-        1026
-      ],
-      "IERC721Receiver": [
-        999
-      ],
-      "NFT": [
-        1615
-      ],
-      "Strings": [
-        1546
-      ]
+      "Address": [1321],
+      "Context": [1343],
+      "ERC165": [1570],
+      "ERC721": [865],
+      "IERC165": [1582],
+      "IERC721": [981],
+      "IERC721Metadata": [1026],
+      "IERC721Receiver": [999],
+      "NFT": [1615],
+      "Strings": [1546]
     },
     "id": 1616,
     "license": "MIT",
@@ -11508,12 +11447,7 @@
     "nodes": [
       {
         "id": 1584,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:9"
       },
@@ -11550,15 +11484,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1615,
-        "linearizedBaseContracts": [
-          1615,
-          865,
-          1026,
-          981,
-          1570,
-          1582,
-          1343
-        ],
+        "linearizedBaseContracts": [1615, 865, 1026, 981, 1570, 1582, 1343],
         "name": "NFT",
         "nameLocation": "126:3:9",
         "nodeType": "ContractDefinition",
@@ -11619,10 +11545,7 @@
                       "id": 1594,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        494,
-                        523
-                      ],
+                      "overloadedDeclarations": [494, 523],
                       "referencedDeclaration": 494,
                       "src": "202:9:9",
                       "typeDescriptions": {
@@ -11699,10 +11622,7 @@
                       "id": 1599,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        494,
-                        523
-                      ],
+                      "overloadedDeclarations": [494, 523],
                       "referencedDeclaration": 494,
                       "src": "268:9:9",
                       "typeDescriptions": {
@@ -11805,9 +11725,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              216
-            ],
+            "baseFunctions": [216],
             "body": {
               "id": 1613,
               "nodeType": "Block",

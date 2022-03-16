@@ -3018,45 +3018,19 @@
   "ast": {
     "absolutePath": "project:/contracts/Marketplace.sol",
     "exportedSymbols": {
-      "Address": [
-        1466
-      ],
-      "Context": [
-        1488
-      ],
-      "Counters": [
-        1562
-      ],
-      "ERC165": [
-        1789
-      ],
-      "ERC721": [
-        1010
-      ],
-      "IERC165": [
-        1801
-      ],
-      "IERC721": [
-        1126
-      ],
-      "IERC721Metadata": [
-        1171
-      ],
-      "IERC721Receiver": [
-        1144
-      ],
-      "Marketplace": [
-        2042
-      ],
-      "Ownable": [
-        104
-      ],
-      "ReentrancyGuard": [
-        144
-      ],
-      "Strings": [
-        1765
-      ]
+      "Address": [1466],
+      "Context": [1488],
+      "Counters": [1562],
+      "ERC165": [1789],
+      "ERC721": [1010],
+      "IERC165": [1801],
+      "IERC721": [1126],
+      "IERC721Metadata": [1171],
+      "IERC721Receiver": [1144],
+      "Marketplace": [2042],
+      "Ownable": [104],
+      "ReentrancyGuard": [144],
+      "Strings": [1765]
     },
     "id": 2043,
     "license": "MIT",
@@ -3064,12 +3038,7 @@
     "nodes": [
       {
         "id": 1803,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:12"
       },
@@ -3154,12 +3123,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2042,
-        "linearizedBaseContracts": [
-          2042,
-          144,
-          104,
-          1488
-        ],
+        "linearizedBaseContracts": [2042, 144, 104, 1488],
         "name": "Marketplace",
         "nameLocation": "295:11:12",
         "nodeType": "ContractDefinition",
@@ -3890,10 +3854,7 @@
                       "id": 1874,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1176:7:12",
                       "typeDescriptions": {
@@ -4165,9 +4126,7 @@
                   "src": "1330:20:12"
                 },
                 {
-                  "assignments": [
-                    1900
-                  ],
+                  "assignments": [1900],
                   "declarations": [
                     {
                       "constant": false,
@@ -4949,9 +4908,7 @@
               "src": "1948:722:12",
               "statements": [
                 {
-                  "assignments": [
-                    1954
-                  ],
+                  "assignments": [1954],
                   "declarations": [
                     {
                       "constant": false,
@@ -5038,9 +4995,7 @@
                   "src": "1958:44:12"
                 },
                 {
-                  "assignments": [
-                    1961
-                  ],
+                  "assignments": [1961],
                   "declarations": [
                     {
                       "constant": false,
@@ -5127,9 +5082,7 @@
                   "src": "2012:48:12"
                 },
                 {
-                  "assignments": [
-                    1968
-                  ],
+                  "assignments": [1968],
                   "declarations": [
                     {
                       "constant": false,
@@ -5305,10 +5258,7 @@
                       "id": 1974,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2119:7:12",
                       "typeDescriptions": {
@@ -5415,10 +5365,7 @@
                       "id": 1982,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2271:7:12",
                       "typeDescriptions": {
@@ -6231,45 +6178,19 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/Marketplace.sol",
     "exportedSymbols": {
-      "Address": [
-        1466
-      ],
-      "Context": [
-        1488
-      ],
-      "Counters": [
-        1562
-      ],
-      "ERC165": [
-        1789
-      ],
-      "ERC721": [
-        1010
-      ],
-      "IERC165": [
-        1801
-      ],
-      "IERC721": [
-        1126
-      ],
-      "IERC721Metadata": [
-        1171
-      ],
-      "IERC721Receiver": [
-        1144
-      ],
-      "Marketplace": [
-        2042
-      ],
-      "Ownable": [
-        104
-      ],
-      "ReentrancyGuard": [
-        144
-      ],
-      "Strings": [
-        1765
-      ]
+      "Address": [1466],
+      "Context": [1488],
+      "Counters": [1562],
+      "ERC165": [1789],
+      "ERC721": [1010],
+      "IERC165": [1801],
+      "IERC721": [1126],
+      "IERC721Metadata": [1171],
+      "IERC721Receiver": [1144],
+      "Marketplace": [2042],
+      "Ownable": [104],
+      "ReentrancyGuard": [144],
+      "Strings": [1765]
     },
     "id": 2043,
     "license": "MIT",
@@ -6277,12 +6198,7 @@
     "nodes": [
       {
         "id": 1803,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".11"
-        ],
+        "literals": ["solidity", "^", "0.8", ".11"],
         "nodeType": "PragmaDirective",
         "src": "32:24:12"
       },
@@ -6367,12 +6283,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2042,
-        "linearizedBaseContracts": [
-          2042,
-          144,
-          104,
-          1488
-        ],
+        "linearizedBaseContracts": [2042, 144, 104, 1488],
         "name": "Marketplace",
         "nameLocation": "295:11:12",
         "nodeType": "ContractDefinition",
@@ -7103,10 +7014,7 @@
                       "id": 1874,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1176:7:12",
                       "typeDescriptions": {
@@ -7378,9 +7286,7 @@
                   "src": "1330:20:12"
                 },
                 {
-                  "assignments": [
-                    1900
-                  ],
+                  "assignments": [1900],
                   "declarations": [
                     {
                       "constant": false,
@@ -8162,9 +8068,7 @@
               "src": "1948:722:12",
               "statements": [
                 {
-                  "assignments": [
-                    1954
-                  ],
+                  "assignments": [1954],
                   "declarations": [
                     {
                       "constant": false,
@@ -8251,9 +8155,7 @@
                   "src": "1958:44:12"
                 },
                 {
-                  "assignments": [
-                    1961
-                  ],
+                  "assignments": [1961],
                   "declarations": [
                     {
                       "constant": false,
@@ -8340,9 +8242,7 @@
                   "src": "2012:48:12"
                 },
                 {
-                  "assignments": [
-                    1968
-                  ],
+                  "assignments": [1968],
                   "declarations": [
                     {
                       "constant": false,
@@ -8518,10 +8418,7 @@
                       "id": 1974,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2119:7:12",
                       "typeDescriptions": {
@@ -8628,10 +8525,7 @@
                       "id": 1982,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2271:7:12",
                       "typeDescriptions": {

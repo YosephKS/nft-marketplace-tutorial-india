@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/Counters.sol",
     "exportedSymbols": {
-      "Counters": [
-        1562
-      ]
+      "Counters": [1562]
     },
     "id": 1563,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 1490,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "87:23:8"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 1562,
-        "linearizedBaseContracts": [
-          1562
-        ],
+        "linearizedBaseContracts": [1562],
         "name": "Counters",
         "nameLocation": "432:8:8",
         "nodeType": "ContractDefinition",
@@ -366,9 +357,7 @@
               "src": "1127:176:8",
               "statements": [
                 {
-                  "assignments": [
-                    1527
-                  ],
+                  "assignments": [1527],
                   "declarations": [
                     {
                       "constant": false,
@@ -509,10 +498,7 @@
                       "id": 1531,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1177:7:8",
                       "typeDescriptions": {
@@ -841,9 +827,7 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/utils/Counters.sol",
     "exportedSymbols": {
-      "Counters": [
-        1562
-      ]
+      "Counters": [1562]
     },
     "id": 1563,
     "license": "MIT",
@@ -851,12 +835,7 @@
     "nodes": [
       {
         "id": 1490,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "87:23:8"
       },
@@ -874,9 +853,7 @@
         },
         "fullyImplemented": true,
         "id": 1562,
-        "linearizedBaseContracts": [
-          1562
-        ],
+        "linearizedBaseContracts": [1562],
         "name": "Counters",
         "nameLocation": "432:8:8",
         "nodeType": "ContractDefinition",
@@ -1193,9 +1170,7 @@
               "src": "1127:176:8",
               "statements": [
                 {
-                  "assignments": [
-                    1527
-                  ],
+                  "assignments": [1527],
                   "declarations": [
                     {
                       "constant": false,
@@ -1336,10 +1311,7 @@
                       "id": 1531,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1177:7:8",
                       "typeDescriptions": {

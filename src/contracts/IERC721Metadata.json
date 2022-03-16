@@ -345,15 +345,9 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
     "exportedSymbols": {
-      "IERC165": [
-        1801
-      ],
-      "IERC721": [
-        1126
-      ],
-      "IERC721Metadata": [
-        1171
-      ]
+      "IERC165": [1801],
+      "IERC721": [1126],
+      "IERC721Metadata": [1171]
     },
     "id": 1172,
     "license": "MIT",
@@ -361,12 +355,7 @@
     "nodes": [
       {
         "id": 1146,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "112:23:5"
       },
@@ -409,11 +398,7 @@
         },
         "fullyImplemented": false,
         "id": 1171,
-        "linearizedBaseContracts": [
-          1171,
-          1126,
-          1801
-        ],
+        "linearizedBaseContracts": [1171, 1126, 1801],
         "name": "IERC721Metadata",
         "nameLocation": "307:15:5",
         "nodeType": "ContractDefinition",
@@ -640,15 +625,9 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
     "exportedSymbols": {
-      "IERC165": [
-        1801
-      ],
-      "IERC721": [
-        1126
-      ],
-      "IERC721Metadata": [
-        1171
-      ]
+      "IERC165": [1801],
+      "IERC721": [1126],
+      "IERC721Metadata": [1171]
     },
     "id": 1172,
     "license": "MIT",
@@ -656,12 +635,7 @@
     "nodes": [
       {
         "id": 1146,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "112:23:5"
       },
@@ -704,11 +678,7 @@
         },
         "fullyImplemented": false,
         "id": 1171,
-        "linearizedBaseContracts": [
-          1171,
-          1126,
-          1801
-        ],
+        "linearizedBaseContracts": [1171, 1126, 1801],
         "name": "IERC721Metadata",
         "nameLocation": "307:15:5",
         "nodeType": "ContractDefinition",

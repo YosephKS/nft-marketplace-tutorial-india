@@ -49,9 +49,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
     "exportedSymbols": {
-      "IERC721Receiver": [
-        1144
-      ]
+      "IERC721Receiver": [1144]
     },
     "id": 1145,
     "license": "MIT",
@@ -59,12 +57,7 @@
     "nodes": [
       {
         "id": 1128,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "101:23:4"
       },
@@ -82,9 +75,7 @@
         },
         "fullyImplemented": false,
         "id": 1144,
-        "linearizedBaseContracts": [
-          1144
-        ],
+        "linearizedBaseContracts": [1144],
         "name": "IERC721Receiver",
         "nameLocation": "289:15:4",
         "nodeType": "ContractDefinition",
@@ -272,9 +263,7 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
     "exportedSymbols": {
-      "IERC721Receiver": [
-        1144
-      ]
+      "IERC721Receiver": [1144]
     },
     "id": 1145,
     "license": "MIT",
@@ -282,12 +271,7 @@
     "nodes": [
       {
         "id": 1128,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "101:23:4"
       },
@@ -305,9 +289,7 @@
         },
         "fullyImplemented": false,
         "id": 1144,
-        "linearizedBaseContracts": [
-          1144
-        ],
+        "linearizedBaseContracts": [1144],
         "name": "IERC721Receiver",
         "nameLocation": "289:15:4",
         "nodeType": "ContractDefinition",

@@ -94,7 +94,7 @@ function NFTBalance() {
       createMarketItemLoading,
       setApproveForAllFetching,
       setApproveForAllLoading,
-    ]
+    ],
   );
 
   const listItem = async () => {
@@ -182,7 +182,7 @@ function NFTBalance() {
                     onClick={() =>
                       window.open(
                         `${getExplorer(chainId)}address/${nft.token_address}`,
-                        "_blank"
+                        "_blank",
                       )
                     }
                   />

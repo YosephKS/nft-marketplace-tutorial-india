@@ -34,12 +34,8 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
     "exportedSymbols": {
-      "ERC165": [
-        1789
-      ],
-      "IERC165": [
-        1801
-      ]
+      "ERC165": [1789],
+      "IERC165": [1801]
     },
     "id": 1790,
     "license": "MIT",
@@ -47,12 +43,7 @@
     "nodes": [
       {
         "id": 1767,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "99:23:10"
       },
@@ -95,18 +86,13 @@
         },
         "fullyImplemented": true,
         "id": 1789,
-        "linearizedBaseContracts": [
-          1789,
-          1801
-        ],
+        "linearizedBaseContracts": [1789, 1801],
         "name": "ERC165",
         "nameLocation": "744:6:10",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "baseFunctions": [
-              1800
-            ],
+            "baseFunctions": [1800],
             "body": {
               "id": 1787,
               "nodeType": "Block",
@@ -317,12 +303,8 @@
   "legacyAST": {
     "absolutePath": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
     "exportedSymbols": {
-      "ERC165": [
-        1789
-      ],
-      "IERC165": [
-        1801
-      ]
+      "ERC165": [1789],
+      "IERC165": [1801]
     },
     "id": 1790,
     "license": "MIT",
@@ -330,12 +312,7 @@
     "nodes": [
       {
         "id": 1767,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "99:23:10"
       },
@@ -378,18 +355,13 @@
         },
         "fullyImplemented": true,
         "id": 1789,
-        "linearizedBaseContracts": [
-          1789,
-          1801
-        ],
+        "linearizedBaseContracts": [1789, 1801],
         "name": "ERC165",
         "nameLocation": "744:6:10",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "baseFunctions": [
-              1800
-            ],
+            "baseFunctions": [1800],
             "body": {
               "id": 1787,
               "nodeType": "Block",
