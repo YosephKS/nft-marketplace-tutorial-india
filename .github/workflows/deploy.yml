@@ -1,0 +1,22 @@
+name: Moralis Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Moralis Deploy Action
+        uses: YosephKS/moralis-deploy-action@v1.0.6.beta1
+        env:
+          MORALIS_API_KEY: ${{ secrets.MORALIS_API_KEY }}
+          MORALIS_API_SECRET: ${{ secrets.MORALIS_API_SECRET }}
+          MORALIS_API_SUBDOMAIN: ${{ secrets.MORALIS_API_SUBDOMAIN }}
+          CUSTOM_FOLDER_PATH: ./build
