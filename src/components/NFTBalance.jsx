@@ -16,7 +16,7 @@ import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
 import { abi as marketplaceABI } from "../contracts/Marketplace.json";
-import { abi as erc721ABI } from "../contracts/ERC721.json";
+// import { abi as erc721ABI } from "../contracts/ERC721.json";
 
 const styles = {
   NFTs: {
@@ -36,6 +36,7 @@ function NFTBalance() {
   const { chainId } = useChain();
   const [visible, setVisibility] = useState(false);
   const [nftToSend, setNftToSend] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [price, setPrice] = useState(1);
   const ItemImage = Moralis.Object.extend("ItemImages");
 
@@ -51,16 +52,7 @@ function NFTBalance() {
     fetch: createMarketItem,
     isFetching: createMarketItemFetching,
     isLoading: createMarketItemLoading,
-  } = useWeb3ExecuteFunction({
-    contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
-    functionName: "createMarketItem",
-    abi: marketplaceABI,
-    params: {
-      nftContract: nftToSend?.token_address,
-      tokenId: nftToSend?.token_id,
-      price: Moralis.Units.ETH(price),
-    },
-  });
+  } = useWeb3ExecuteFunction({});
 
   /**
    * useWeb3ExecuteFunction - setApproveForAll
@@ -73,15 +65,7 @@ function NFTBalance() {
     fetch: setApproveForAll,
     isFetching: setApproveForAllFetching,
     isLoading: setApproveForAllLoading,
-  } = useWeb3ExecuteFunction({
-    contractAddress: nftToSend?.token_address,
-    functionName: "setApprovalForAll",
-    abi: erc721ABI,
-    params: {
-      operator: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
-      approved: true,
-    },
-  });
+  } = useWeb3ExecuteFunction({});
 
   const loading = useMemo(
     () =>

@@ -103,16 +103,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     fetch: createMarketSale,
     isFetching: createMarketSaleFetching,
     isLoading: createMarketSaleLoading,
-  } = useWeb3ExecuteFunction({
-    contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
-    functionName: "createMarketSale",
-    abi: marketplaceABI,
-    params: {
-      nftContract: nftToBuy?.token_address,
-      itemId: getMarketItem(nftToBuy)?.itemId,
-    },
-    msgValue: getMarketItem(nftToBuy)?.price,
-  });
+  } = useWeb3ExecuteFunction({});
 
   async function purchaseItem() {
     await createMarketSale({
