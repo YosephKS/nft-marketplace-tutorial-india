@@ -83,7 +83,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     const itemID = tokenDetails.itemId;
     const tokenPrice = tokenDetails.price;
     const ops = {
-      contractAddress: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
+      contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
       functionName: purchaseItemFunction,
       abi,
       params: {
@@ -153,8 +153,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
       (e) =>
         e.nftContract === nft?.token_address &&
         e.tokenId === nft?.token_id &&
-        e.sold === false &&
-        e.confirmed === true
+        e.sold === false
     );
     return result;
   };

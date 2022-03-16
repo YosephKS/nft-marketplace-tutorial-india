@@ -3,11 +3,13 @@ import {
   useMoralisWeb3Api,
   useMoralisWeb3ApiCall,
   useMoralis,
+  useChain,
 } from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
 export const useNFTBalance = (options) => {
-  const { chainId } = useMoralis();
+  const { isInitialized, account: walletAddress } = useMoralis();
+  const { chainId } = useChain();
   const { account } = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
   const [NFTBalance, setNFTBalance] = useState([]);
@@ -16,7 +18,11 @@ export const useNFTBalance = (options) => {
     data,
     error,
     isLoading,
-  } = useMoralisWeb3ApiCall(account.getNFTs, { chain: chainId, ...options });
+  } = useMoralisWeb3ApiCall(account.getNFTs, {
+    chain: chainId,
+    address: walletAddress,
+    ...options,
+  });
   const [fetchSuccess, setFetchSuccess] = useState(true);
 
   const handleFetchNFTBalance = useCallback(async () => {
@@ -39,13 +45,22 @@ export const useNFTBalance = (options) => {
       }
     }
     setNFTBalance(NFTs);
-  }, [data, resolveLink]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   useEffect(() => {
     if (data?.result) {
       handleFetchNFTBalance();
     }
-  }, [data, handleFetchNFTBalance]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  useEffect(() => {
+    if (isInitialized && chainId && account) {
+      getNFTBalance();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialized, chainId, account]);
 
   return { getNFTBalance, NFTBalance, fetchSuccess, error, isLoading };
 };

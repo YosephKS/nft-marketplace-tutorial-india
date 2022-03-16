@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useMoralis, useChain } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Input, Alert, Spin, Button } from "antd";
+import {
+  Card,
+  Image,
+  Tooltip,
+  Modal,
+  Input,
+  Alert,
+  Spin,
+  Button,
+  notification,
+} from "antd";
 import { useNFTBalance } from "hooks/useNFTBalance";
 import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
-import { abi } from "../contracts/Marketplace.json";
+import { abi as marketplaceABI } from "../contracts/Marketplace.json";
 import { abi as erc721ABI } from "../contracts/ERC721.json";
-const { Meta } = Card;
 
 const styles = {
   NFTs: {
@@ -28,116 +37,93 @@ function NFTBalance() {
   const [visible, setVisibility] = useState(false);
   const [nftToSend, setNftToSend] = useState(null);
   const [price, setPrice] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const contractProcessor = useWeb3ExecuteFunction();
-  const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
 
-  async function list(nft, listPrice) {
-    setLoading(true);
-    const p = listPrice * ("1e" + 18);
-    const ops = {
-      contractAddress: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
-      functionName: listItemFunction,
-      abi,
-      params: {
-        nftContract: nft.token_address,
-        tokenId: nft.token_id,
-        price: String(p),
-      },
-    };
+  const {
+    fetch: createMarketItem,
+    isFetching: createMarketItemFetching,
+    isLoading: createMarketItemLoading,
+  } = useWeb3ExecuteFunction({
+    contractAddress: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
+    functionName: "createMarketItem",
+    abi: marketplaceABI,
+    params: {
+      nftContract: nftToSend?.token_address,
+      tokenId: nftToSend?.token_id,
+      price: (price * ("1e" + 18)).toString(),
+    },
+  });
 
-    await contractProcessor.fetch({
-      params: ops,
+  const {
+    fetch: setApproveForAll,
+    isFetching: setApproveForAllFetching,
+    isLoading: setApproveForAllLoading,
+  } = useWeb3ExecuteFunction({
+    contractAddress: nftToSend?.token_address,
+    functionName: "setApprovalForAll",
+    abi: erc721ABI,
+    params: {
+      operator: "0x54Ab7A7FAcf66e5019B21D42F024ba43aa69E7Ff",
+      approved: true,
+    },
+  });
+
+  const loading = useMemo(
+    () =>
+      createMarketItemFetching ||
+      createMarketItemLoading ||
+      setApproveForAllFetching ||
+      setApproveForAllLoading,
+    [
+      createMarketItemFetching,
+      createMarketItemLoading,
+      setApproveForAllFetching,
+      setApproveForAllLoading,
+    ]
+  );
+
+  const listItem = async () => {
+    await createMarketItem({
       onSuccess: () => {
-        console.log("success");
-        setLoading(false);
         setVisibility(false);
         addItemImage();
-        succList();
+        notification.success({
+          message: "Success!",
+          description:
+            "Your NFT has been successfully listed on the marketplace!",
+        });
       },
-      onError: (error) => {
-        setLoading(false);
-        failList();
+      onError: () => {
+        notification.error({
+          message: "Error!",
+          description: "There was a problem listing your NFT!",
+        });
       },
     });
-  }
+  };
 
-  async function approveAll(nft) {
-    setLoading(true);
-    const ops = {
-      contractAddress: nft.token_address,
-      functionName: "setApprovalForAll",
-      abi: erc721ABI,
-      params: {
-        operator: "0x1AA46264ee4A7fcC474165cEcABB7Eb359E4cF2D",
-        approved: true,
-      },
-    };
-
-    await contractProcessor.fetch({
-      params: ops,
+  const approveAll = async () => {
+    await setApproveForAll({
       onSuccess: () => {
-        console.log("Approval Received");
-        setLoading(false);
         setVisibility(false);
-        succApprove();
+        notification.success({
+          message: "Success!",
+          description: "Approval is now set, you may list your NFT!",
+        });
       },
-      onError: (error) => {
-        setLoading(false);
-        failApprove();
+      onError: () => {
+        notification.error({
+          message: "Error!",
+          description: "There was a problem with setting approval!",
+        });
       },
     });
-  }
+  };
 
   const handleSellClick = (nft) => {
     setNftToSend(nft);
     setVisibility(true);
   };
-
-  function succList() {
-    let secondsToGo = 5;
-    const modal = Modal.success({
-      title: "Success!",
-      content: `Your NFT was listed on the marketplace`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
-
-  function succApprove() {
-    let secondsToGo = 5;
-    const modal = Modal.success({
-      title: "Success!",
-      content: `Approval is now set, you may list your NFT`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
-
-  function failList() {
-    let secondsToGo = 5;
-    const modal = Modal.error({
-      title: "Error!",
-      content: `There was a problem listing your NFT`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
-
-  function failApprove() {
-    let secondsToGo = 5;
-    const modal = Modal.error({
-      title: "Error!",
-      content: `There was a problem with setting approval`,
-    });
-    setTimeout(() => {
-      modal.destroy();
-    }, secondsToGo * 1000);
-  }
 
   function addItemImage() {
     const itemImage = new ItemImage();
@@ -153,7 +139,7 @@ function NFTBalance() {
   return (
     <>
       <div style={styles.NFTs}>
-        {abi.noContractDeployed && (
+        {marketplaceABI.noContractDeployed && (
           <>
             <Alert
               message="No Smart Contract Details Provided. Please deploy smart contract and provide address + ABI in the MoralisDappProvider.js file"
@@ -202,7 +188,7 @@ function NFTBalance() {
               }
               key={index}
             >
-              <Meta title={nft.name} description={nft.contract_type} />
+              <Card.Meta title={nft.name} description={nft.contract_type} />
             </Card>
           ))}
       </div>
@@ -211,14 +197,14 @@ function NFTBalance() {
         title={`List ${nftToSend?.name} #${nftToSend?.token_id} For Sale`}
         visible={visible}
         onCancel={() => setVisibility(false)}
-        onOk={() => list(nftToSend, price)}
+        onOk={() => listItem()}
         okText="List"
         footer={[
           <Button onClick={() => setVisibility(false)}>Cancel</Button>,
           <Button onClick={() => approveAll(nftToSend)} type="primary">
             Approve
           </Button>,
-          <Button onClick={() => list(nftToSend, price)} type="primary">
+          <Button onClick={() => listItem()} type="primary">
             List
           </Button>,
         ]}

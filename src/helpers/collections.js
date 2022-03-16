@@ -5,7 +5,7 @@ export const networkCollections = {
       image:
         "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "Test Mages",
-      addrs: "0x275d553f426355c20b134D944B5b28D31CDb83DA",
+      addrs: "0xCc2F0bD2397533e86B80c0F26933B6980e029eBe",
     },
     {
       image:
