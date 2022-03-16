@@ -7,6 +7,9 @@ contract NFT is ERC721 {
     constructor() ERC721("Example Token", "EXMP") {
         _safeMint(0x7c470D1633711E4b77c8397EBd1dF4095A9e9E02, 0);
         _safeMint(0x7c470D1633711E4b77c8397EBd1dF4095A9e9E02, 1);
+        _safeMint(0x7c470D1633711E4b77c8397EBd1dF4095A9e9E02, 2);
+        _safeMint(0x7c470D1633711E4b77c8397EBd1dF4095A9e9E02, 3);
+        _safeMint(0x7c470D1633711E4b77c8397EBd1dF4095A9e9E02, 4);
     }
 
     function _baseURI() internal pure override returns (string memory) {
