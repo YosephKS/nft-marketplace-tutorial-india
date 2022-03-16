@@ -92,6 +92,13 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     return result;
   };
 
+  /**
+   * useWeb3ExecuteFunction - createMarketSale
+   *
+   * @description Buy the NFT in the Marketplace
+   * @param {Address} nftContract - NFT Contract address
+   * @param {String} itemId - NFT Item ID
+   */
   const {
     fetch: createMarketSale,
     isFetching: createMarketSaleFetching,

@@ -39,6 +39,14 @@ function NFTBalance() {
   const [price, setPrice] = useState(1);
   const ItemImage = Moralis.Object.extend("ItemImages");
 
+  /**
+   * useWeb3ExecuteFunction - Create Market Item
+   *
+   * @description Lising NFT to Marketplace
+   * @param {Address} nftContract - NFT Contract Address that is going to be listed
+   * @param {String} tokenId - Token Id of the NFT
+   * @param {String} price - Price that is going to be listed
+   */
   const {
     fetch: createMarketItem,
     isFetching: createMarketItemFetching,
@@ -50,10 +58,17 @@ function NFTBalance() {
     params: {
       nftContract: nftToSend?.token_address,
       tokenId: nftToSend?.token_id,
-      price: (price * ("1e" + 18)).toString(),
+      price: Moralis.Units.ETH(price),
     },
   });
 
+  /**
+   * useWeb3ExecuteFunction - setApproveForAll
+   *
+   * @description Approve NFT to Marketplace
+   * @param {Address} operator - Marketplace address
+   * @param {Boolean} approved - true or false
+   */
   const {
     fetch: setApproveForAll,
     isFetching: setApproveForAllFetching,
