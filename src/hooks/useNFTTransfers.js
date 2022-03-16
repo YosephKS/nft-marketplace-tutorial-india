@@ -11,7 +11,10 @@ export const useNFTTransfers = (options) => {
     data,
     error,
     isLoading,
-  } = useMoralisWeb3ApiCall(account.getNFTTransfers, { chain: chainId, ...options });
+  } = useMoralisWeb3ApiCall(account.getNFTTransfers, {
+    chain: chainId,
+    ...options,
+  });
 
   useEffect(() => data && setNFTTransfers(data?.result), [data]);
 
